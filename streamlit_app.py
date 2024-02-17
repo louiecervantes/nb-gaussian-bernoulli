@@ -17,10 +17,10 @@ def app():
     st.title('Understanding Gaussian and Bernoulli Naive Bayes')
     st.subheader('by Louie F. Cervantes M.Eng., WVSU College of ICT')
  
-    st.text('Both Gaussian and Bernoulli Naive Bayes are variants \
+    st.write("""Both Gaussian and Bernoulli Naive Bayes are variants \
         of the Naive Bayes algorithm, a popular machine learning \
-            technique for classification. However, they differ in \
-            how they handle data and are suited for different types of datasets.')
+        technique for classification. However, they differ in \
+        how they handle data and are suited for different types of datasets.""")
 
     st.text('Key Differences:')
     st.text('Data Type:')
