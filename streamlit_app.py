@@ -83,7 +83,7 @@ def app():
     elif selected_option=='Continuous': 
         dbfile = 'cont_dataset.csv'
     else:
-        dbfile = 'three_centroids.csv'
+        dbfile = 'three-centroids.csv'
         
     if st.button('Start'):
         
