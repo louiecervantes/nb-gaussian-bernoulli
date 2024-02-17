@@ -79,7 +79,7 @@ def app():
     options = ['Continuous', 'Binary']
     selected_option = st.selectbox('Select the dataset', options)
     if selected_option=='Binary':
-        dbfile = 'binary_dataset_with_target.csv'
+        dbfile = 'two_classes.csv'
     else:
         dbfile = 'cont_dataset.csv'
 
