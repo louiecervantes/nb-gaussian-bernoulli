@@ -17,7 +17,53 @@ def app():
     st.title('Understanding Gaussian and Bernoulli Naive Bayes')
     st.subheader('by Louie F. Cervantes M.Eng., WVSU College of ICT')
  
-    #TODO: inser descrption here
+    st.text('Both Gaussian and Bernoulli Naive Bayes are variants \
+        of the Naive Bayes algorithm, a popular machine learning \
+            technique for classification. However, they differ in \
+            how they handle data and are suited for different types of datasets.')
+
+    st.text('Key Differences:')
+    st.text('Data Type:')
+    text = """ Gaussian Naive Bayes: Assumes features are continuous 
+    and follow a normal distribution (bell-shaped curve). Examples: 
+    height, weight, temperature."""
+    st.text(text)
+
+    text = """Bernoulli Naive Bayes: Assumes features are binary 
+    (yes/no, true/false, present/absent). Examples: email spam 
+    filter (spam/not spam), image pixel (black/white). Conditional 
+    Probability Distribution:"""
+    st.text(text)
+
+    text = """Gaussian Naive Bayes: Uses a Gaussian distribution to 
+    estimate the probability of a feature value given a class. 
+    Bernoulli Naive Bayes: Uses a Bernoulli distribution to estimate 
+    the probability of a feature being present or absent given a class."""
+    st.text(text)
+
+    st.text('Assumptions:')
+
+    text = """Gaussian Naive Bayes: Assumes independence between features, 
+    which may not be realistic in most real-world scenarios.
+    Bernoulli Naive Bayes: Makes the same independence assumption, 
+    but it might be less sensitive to it due to simpler data."""
+
+    st.text(text)
+    st.text('Best Datasets:')
+
+    text = """Gaussian Naive Bayes: Works best for datasets with numerically 
+    continuous features that are normally distributed. Examples: predicting 
+    house prices based on size, number of bedrooms, etc. Can be sensitive to 
+    outliers and non-normal distributions."""
+
+    st.text(text)
+
+    text = """Bernoulli Naive Bayes: Ideal for datasets with binary features or 
+    features that can be easily converted to binary. Examples: text classification 
+    (spam/not spam), document categorization, image recognition (presence of 
+    specific objects). Not ideal for continuous data or large numbers of 
+    discrete categories."""
+    st.text(text)
 
     # Create the logistic regression 
     clf = GaussianNB() 
