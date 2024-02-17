@@ -6,7 +6,7 @@ import altair as alt
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.naive_bayes import GaussianNB
-from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import BernoulliNB
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
@@ -14,48 +14,32 @@ from sklearn.metrics import classification_report
 # Define the Streamlit app
 def app():
     
-    st.title('Compare Linear Regression and Naive Bayes Classifiers')
+    st.title('Understanding Gaussian and Bernoulli Naive Bayes')
     st.subheader('by Louie F. Cervantes M.Eng., WVSU College of ICT')
  
-    st.write('Logistic Regression:')
-    text = """Strengths: \nMore flexible: Can capture complex relationships between 
-    features and classes, even when they are non-linear. No strong independence assumption: 
-    Doesn't rely on the assumption that features are independent, which can be 
-    helpful for overlapping clusters."""
-    st.write(text)
-    text = """Weaknesses: \nOverfitting potential: Can overfit the training data when 
-    dealing with high dimensionality 
-    or small datasets."""
-    st.write(text)
-
-    st.write('Naive Bayes')
-    text = """Strengths: \nEfficient: Works well with high-dimensional datasets 
-    due to its simplicity. 
-    Fast training: Requires less training time compared to logistic regression. 
-    Interpretable: Easy to understand the contribution of each feature to the prediction."""
-    st.write(text)
-
-    text = """Weaknesses:\nIndependence assumption: Relies on the strong 
-    assumption of feature independence, which can be violated in overlapping clusters, 
-    leading to inaccurate predictions."""
-    st.write(text)
+    #TODO: inser descrption here
 
     # Create the logistic regression 
     clf = GaussianNB() 
-    options = ['Naive Bayes', 'Logistic Regression']
+    options = ['Gaussian Naive Bayes', 'Bernoulli Naive Bayes']
     selected_option = st.selectbox('Select the classifier', options)
-    if selected_option=='Logistic Regression':
-        clf = LogisticRegression(C=1.0, class_weight=None, 
-            dual=False, fit_intercept=True,
-            intercept_scaling=1, max_iter=100, multi_class='auto',
-            n_jobs=1, penalty='l2', random_state=42, solver='lbfgs',
-            tol=0.0001, verbose=0, warm_start=False)
+    if selected_option=='Bernoulli Naive Bayes':
+        clf = BernoulliNB()
     else:
         clf = GaussianNB()
-        
+    
+    # Create the logistic regression 
+    dbfile = 'cont_dataset.csv'
+    options = ['Continuous', 'Binary']
+    selected_option = st.selectbox('Select the dataset', options)
+    if selected_option=='Binary':
+        dbfile = 'binary_dataset_with_target.csv'
+    else:
+        dbfile = 'cont_dataset.csv'
+
     if st.button('Start'):
         
-        df = pd.read_csv('data_decision_trees.csv', header=None)
+        df = pd.read_csv(dbfile, header=0)
         # st.dataframe(df, use_container_width=True)  
         
         st.subheader('The Dataset')
