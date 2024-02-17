@@ -76,13 +76,15 @@ def app():
     
     # Create the logistic regression 
     dbfile = 'cont_dataset.csv'
-    options = ['Continuous', 'Binary']
+    options = ['Continuous', 'Binary', 'Centroids']
     selected_option = st.selectbox('Select the dataset', options)
     if selected_option=='Binary':
         dbfile = 'two_classes.csv'
-    else:
+    elif selected_option=='Binary': 
         dbfile = 'cont_dataset.csv'
-
+    else:
+        dbfile = 'three_centroids.csv'
+        
     if st.button('Start'):
         
         df = pd.read_csv(dbfile, header=0)
