@@ -40,12 +40,10 @@ def app():
     if st.button('Start'):
         
         df = pd.read_csv(dbfile, header=0)
-        # st.dataframe(df, use_container_width=True)  
-        
         st.subheader('The Dataset')
         # display the dataset
         st.dataframe(df, use_container_width=True)  
-
+        df = labeltonumeric(df, 'Target')
         #load the data and the labels
         X = df.values[:,0:-1]
         y = df.values[:,-1]          
@@ -64,6 +62,12 @@ def app():
         st.text(classification_report(y_test, y_test_pred))
         st.subheader('VIsualization')
         visualize_classifier(clf, X_test, y_test_pred)
+
+def labeltonumeric(df, column):
+    from sklearn.preprocessing import LabelEncoder
+    le = LabelEncoder()
+    df[column] = le.fit_transform(df[column])
+    return df
 
 def visualize_classifier(classifier, X, y, title=''):
     # Define the minimum and maximum values for X and Y
