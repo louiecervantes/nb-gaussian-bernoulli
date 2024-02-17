@@ -90,7 +90,7 @@ def app():
         st.subheader('The Dataset')
         # display the dataset
         st.dataframe(df, use_container_width=True)  
-        df = labeltonumeric(df, 'Target')
+
         #load the data and the labels
         X = df.values[:,0:-1]
         y = df.values[:,-1]          
