@@ -75,15 +75,14 @@ def app():
         clf = GaussianNB()
     
     # Create the logistic regression 
-    dbfile = 'cont_dataset.csv'
-    options = ['Continuous', 'Binary', 'Centroids']
+    dbfile = 'three-clusters.csv'
+    options = ['Multiclass', 'Binary']
     selected_option = st.selectbox('Select the dataset', options)
     if selected_option=='Binary':
-        dbfile = 'two_classes.csv'
-    elif selected_option=='Continuous': 
-        dbfile = 'cont_dataset.csv'
-    else:
-        dbfile = 'three-centroids.csv'
+        dbfile = 'two-clusters.csv'
+    else :
+        dbfile = 'three-clusters.csv'
+
         
     if st.button('Start'):
         
